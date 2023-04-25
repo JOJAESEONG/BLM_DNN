@@ -58,4 +58,6 @@ BLM/
 ## Procedure
 프로그램의 실행 순서 측면에서 보면 다음과 같이 파일들이 순차적으로 호출된다고 생각하면 편하다.
 
-![call hierarchy](https://github.com/JOJAESEONG/BLM_DNN/blob/main/simple.png)
+![simple](https://user-images.githubusercontent.com/29397382/234165076-e2ed8f9f-a4ec-4948-86b8-60f1dbafad4d.png)
+
+
