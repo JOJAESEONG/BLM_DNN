@@ -54,7 +54,7 @@ BLM/
     ├── register.ejs
     ├── alert.ejs
     └── index.js
-     
+```
 ## Procedure
 프로그램의 실행 순서 측면에서 보면 다음과 같이 파일들이 순차적으로 호출된다고 생각하면 편하다.
 
