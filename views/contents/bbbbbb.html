@@ -1,0 +1,221 @@
+b
+
+<div class="tab-pane fade" id="tab-specifications" role="tabpanel" aria-labelledby="specifications-tab">
+                        <div class="row mt-2">
+                          <div class="card-body">
+                            <div class="mb-1"><span class="ms-0 text-dark fw-semi-bold">One site</span>
+                            </div>
+                            <p class="mb-5">Input varlables</p>
+                            <div class="col-lg ps-lg">
+                              <form class="row g-2">
+                                <div class="col-sm-2">
+                                  <label class="form-label" for="inputEmail4">pH</label>
+                                  <input class="form-control" id="inputEmail4" type="email" />
+                                </div>
+                                <div class="col-sm-3">
+                                  <label class="form-label" for="inputAddress2">Ca</label>
+                                  <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <label class="form-label" for="inputAddress2">Mg</label>
+                                  <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm-3">
+                                  <label class="form-label" for="inputAddress2">Na</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm-4">
+                                  <label class="form-label" for="inputState">Dissolved organic carbon</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm">
+                                  <label class="form-label" for="inputZip">Individual dissolved Cu</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm">
+                                  <label class="form-label" for="inputZip">Annual dissolved Cu</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="mb-5">
+                                  <button class="btn btn-primary" type="submit">Calculate</button>
+                                </div>
+                              </form>
+                              <p class="mb-3">Outcome</p>
+                              <form class="row g-2">
+                                <div class="col-sm-3">
+                                  <label class="form-label" for="inputCity">BLM-based acute PNEC</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="Asian species" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm">
+                                  <label class="form-label" for="inputZip">BLM-based chronic PNEC</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="European species" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎎/L</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm">
+                                  <label class="form-label" for="inputState">Acute RCR</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                  </div>
+                                </div>
+                                <div class="col-sm">
+                                  <label class="form-label" for="inputZip">Chronic RCR</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <hr class="my-4" />
+                            <div class="mb-3"><span class="ms-1 text-dark fw-semi-bold">Batch file</span>
+                            </div>
+                            <p class="mb">Input variables</p>
+                            <div class="card-body bg-light">
+                              <form class="dropzone dropzone-multiple p-0" id="dropzoneMultipleFileUpload" data-dropzone="data-dropzone" action="#!">
+                                <div class="fallback">
+                                  <input name="file" type="file" multiple="multiple" />
+                                </div>
+                                <div class="dz-message" data-dz-message="data-dz-message"> <img class="me-2" src="assets/img/icons/cloud-upload.svg" width="25" alt="" />Drop your files here</div>
+                                <div class="dz-preview dz-preview-multiple m-0 d-flex flex-column">
+                                  <div class="d-flex media align-items-center mb-3 pb-3 border-bottom btn-reveal-trigger"><img class="dz-image" src="assets/img/icons/cloud-upload.svg" alt="..." data-dz-thumbnail="data-dz-thumbnail" />
+                                    <div class="flex-1 d-flex flex-between-center">
+                                      <div>
+                                        <h6 data-dz-name="data-dz-name"></h6>
+                                        <div class="d-flex align-items-center">
+                                          <p class="mb-0 fs--1 text-400 lh-1" data-dz-size="data-dz-size"></p>
+                                          <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                                        </div>
+                                      </div>
+                                      <div class="dropdown font-sans-serif">
+                                        <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal dropdown-caret-none" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h"></span></button>
+                                        <div class="dropdown-menu dropdown-menu-end border py-2"><a class="dropdown-item" href="#!" data-dz-remove="data-dz-remove">Remove File</a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="mb-5">
+                              <button class="btn btn-primary" type="submit">Calculate</button>
+                            </div>
+                            <div id="tableExample" data-list='{"valueNames":["name","email","age"],"page":5,"pagination":true}'>
+                              <div class="table-responsive scrollbar">
+                                <table class="table table-bordered table-striped fs--1 mb-0">
+                                  <thead class="bg-200 text-900">
+                                    <tr>
+                                      <th class="sort" data-sort="name">Name</th>
+                                      <th class="sort" data-sort="email">Email</th>
+                                      <th class="sort" data-sort="age">Age</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="list">
+                                    <tr>
+                                      <td class="name">Anna</td>
+                                      <td class="email">anna@example.com</td>
+                                      <td class="age">18</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Homer</td>
+                                      <td class="email">homer@example.com</td>
+                                      <td class="age">35</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Oscar</td>
+                                      <td class="email">oscar@example.com</td>
+                                      <td class="age">52</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Emily</td>
+                                      <td class="email">emily@example.com</td>
+                                      <td class="age">30</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Jara</td>
+                                      <td class="email">jara@example.com</td>
+                                      <td class="age">25</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Clark</td>
+                                      <td class="email">clark@example.com</td>
+                                      <td class="age">39</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Jennifer</td>
+                                      <td class="email">jennifer@example.com</td>
+                                      <td class="age">52</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Tony</td>
+                                      <td class="email">tony@example.com</td>
+                                      <td class="age">30</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Tom</td>
+                                      <td class="email">tom@example.com</td>
+                                      <td class="age">25</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Michael</td>
+                                      <td class="email">michael@example.com</td>
+                                      <td class="age">39</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Antony</td>
+                                      <td class="email">antony@example.com</td>
+                                      <td class="age">39</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Raymond</td>
+                                      <td class="email">raymond@example.com</td>
+                                      <td class="age">52</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Marie</td>
+                                      <td class="email">marie@example.com</td>
+                                      <td class="age">30</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Cohen</td>
+                                      <td class="email">cohen@example.com</td>
+                                      <td class="age">25</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="name">Rowen</td>
+                                      <td class="email">rowen@example.com</td>
+                                      <td class="age">39</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="row align-items-center mt-3">
+                                <div class="pagination d-none"></div>
+                                <div class="col">
+                                  <p class="mb-0 fs--1">
+                                    <span class="d-none d-sm-inline-block" data-list-info="data-list-info"></span>
+                                    <span class="d-none d-sm-inline-block"> &mdash;</span>
+                                    <a class="fw-semi-bold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+                                  </p>
+                                </div>
+                                <div class="col-auto d-flex">
+                                  <button class="btn btn-sm btn-primary" type="button" data-list-pagination="prev"><span>Previous</span></button>
+                                  <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>

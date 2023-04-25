@@ -1,0 +1,30 @@
+{
+  "name": "blm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arraylist": "^0.1.0",
+    "body-parser": "^1.20.2",
+    "csv-parser": "^3.0.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "helmet": "^6.1.5",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "memorystore": "^1.6.7",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.2.0",
+    "nocache": "^3.0.4",
+    "request-promise": "^4.2.6",
+    "session-file-store": "^1.5.0"
+  }
+}
