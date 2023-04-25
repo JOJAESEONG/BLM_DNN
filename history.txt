@@ -1,0 +1,11 @@
+muter
+
+        const file = req.file;
+        if (!file) {
+          // 파일이 업로드되지 않은 경우
+          res.status(400).send('파일을 선택해주세요.');
+        } else {
+          // 파일이 업로드된 경우
+          console.log(file);
+          res.send('파일이 업로드되었습니다.');
+        }      
