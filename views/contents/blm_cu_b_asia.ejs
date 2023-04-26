@@ -183,7 +183,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="row mt-2">
                           <div class="card-body">
-                            <div class="mb-1"><span style="font-size: 1.5em;" class="ms-0 text-dark fw-semi-bold">■ Input variables</span>
+                            <div class="mb-1"><span style="font-size: 1.5em;" class="ms-0 text-dark fw-semi-bold">■ Input values</span>
                             </div>
                             <!-- <p class="mb-5">Input varlables</p> -->
                           </br>
@@ -219,25 +219,27 @@
                                 </div>
                               <div class="row g-2">
                                 <div class="col-sm-3">
-                                  <label class="form-label" for="inputZip"><span style="font-size: 1.3em;">Annual Diss-Cu</span></label>
+                                  <label class="form-label" for="inputZip"><span style="font-size: 1.3em;">Annual Diss-Cu<sup>a</sup></span></label>
                                   <div class="input-group mb-3">
                                     <input class="form-control" name="cu_dc_input" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎍/L</span>
                                   </div>
                                 </div>
                                 <div class="col-sm-3">
-                                  <label class="form-label" for="inputZip"><span style="font-size: 1.3em;">Individual Diss-Cu</span></label>
+                                  <label class="form-label" for="inputZip"><span style="font-size: 1.3em;">Individual Diss-Cu<sup>b</sup></span></label>
                                   <div class="input-group mb-3">
                                     <input class="form-control" name="cu_dc2_input" type="text" placeholder="float" aria-label="Recipient's username" aria-describedby="basic-addon2" /><span class="input-group-text" id="basic-addon2">㎍/L</span>
                                   </div>
-
                                 </div>
+                                <div class="mb-1"><span style="font-size: 1.0em;" > <sup>a</sup> :&nbsp;annual mean value of dissolved copper concentrations</span>
+                                <div class="mb-1"><span style="font-size: 1.0em;" > <sup>b</sup> :&nbsp;dissolved copper concentration in individual sample</span>
                                 <div class="mb-5">
+                                  </br>
                                   <input type="hidden" name="formId" value="form1">
                                   <button class="btn btn-primary" type="submit">Calculate</button>
                                 </div>
                               </div>
                               </form>
-                              <div class="mb-1"><span style="font-size: 1.em;" >Water quality conditions for ecological risk assessment</span>
+                              <div class="mb-1"><span style="font-size: 1.em;" >Summary</span>
                               </div>                            
                               <div class="table-responsive scrollbar">
                                 <table class="table table-bordered table-striped fs--1 mb-0" style="text-align: center;">
@@ -298,16 +300,16 @@
                                 </table>
                               </div>
                               </br>
-                              <div class="mb-1"><span style="font-size: 1.0em;"> Results</span>
+                              <div class="mb-1"><span style="font-size: 1.0em;">Ecological risk assessment results</span>
                               </div>      
                               <div class="table-responsive scrollbar">
                                 <table class="table table-bordered table-striped fs--1 mb-0" style="text-align: center;">
                                   <thead class="bg-200 text-900">
                                     <tr>
                                       <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based chronic PNEC (㎍/L)</th>
-                                      <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Chronic RCR</th>
+                                      <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Chronic RCR<sup>c</sup></th>
                                       <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based acute HC5 (㎍/L)</th>
-                                      <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Acute RCR</th>
+                                      <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Acute RCR<sup>d</sup></th>
                                     </tr>
                                   </thead>
                                   <tbody class="list">
@@ -343,15 +345,22 @@
                                   </tbody>
                                 </table>
                               </div>
+                            </br> 
+                            <div class="mb-1"><span style="font-size: 1.0em;" > <sup>c</sup> :&nbsp;Chronic RCR is calculated by the annual mean value of dissolved copper concentrations by BLM-based chronic PNEC.</span>
+                            <div class="mb-1"><span style="font-size: 1.0em;" > <sup>d</sup> :&nbsp;Acute RCR is calculated by the dissolved copper concentration in individual sample by BLM-based acute HC5</span>                              
                             </div>
                         <hr class="my-4" />
-                          <div class="mb-3"><span style="font-size: 1.5em;" class="ms-0 text-dark fw-semi-bold">■ Batch file</span>
+                          <div class="mb-3"><span style="font-size: 1.5em;" class="ms-0 text-dark fw-semi-bold">■ Input values as a batch file</span>
                             </div>
                           </br>
                           <div>
-                            <button class="btn btn-primary" onclick="window.location.href='/blm_cu_asia/download'">Download Template</button>
+                            <button class="btn btn-primary" name="cu_b2" onclick="window.location.href='/blm_cu_b_asia/download'">Download Template</button>
                           </div>
-                          <p class="mb">※ Please download the Template.csv file first. And please fill in the value according to the model and upload it.</p>
+                          <br>
+                          <div class="mb-1">※ Please download the Template.csv file first. And please fill in the value according to the model and upload it.</div>
+                          <div class="mb-1">※ Units are shown in the summary table below.</div>
+                          <div class="mb-1">※ Calculates up to 15 samples.</div>
+                          
                             <div class="card-body bg-light">
                               <form class="dropzone dropzone-multiple p-0" method="post" data-dropzone="data-dropzone" action="/blm_cu_b_asia" enctype="multipart/form-data">             
                                 <div class="mb-3"><label class="form-label" for="customFileSm">Upload File</label><input class="form-control form-control-lg" id="customFileLg" name="file" type="file" />
@@ -363,7 +372,7 @@
                         </div>
                             <div id="tableExample" data-list='{"valueNames":["name","email","age"],"page":5,"pagination":true}'>
                             </br>
-                            <div class="mb-1"><span style="font-size: 1.0em;"> Results</span>
+                            <div class="mb-1"><span style="font-size: 1.0em;">Summary</span>
                             </div>                                 
                               <div class="table-responsive scrollbar">
                                 <table class="table table-bordered table-striped fs--1 mb-0" style="text-align: center;">
@@ -500,6 +509,7 @@
                                   <button class="btn btn-sm btn-primary px-4 ms-2" type="button" data-list-pagination="next"><span>Next</span></button>
                                 </div>
                               </div>
+                            </br>
                             </div>
                           </div>
                         </div>
@@ -514,10 +524,10 @@
           <footer class="footer">
             <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
               <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">DNN models for BLM © Copyright 2022 - All Rights Reserved - Disclaimer - Privacy Policy - Webdesign by ?????? This site is protected by ???? and ??????. </p>
+                <p class="mb-0 text-600">DNN models for BLM © Copyright 2022 - All Rights Reserved - Disclaimer; - This site is protected the Google ; <a href="https://policies.google.com/privacy">Privacy Policy</a>  and  <a href="https://policies.google.com/terms">Terms of Service</a> apply. </p>
               </div>
               <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v1.00</p>
+                <!-- <p class="mb-0 text-600">v1.00</p> -->
               </div>
             </div>
           </footer>

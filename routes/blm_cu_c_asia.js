@@ -153,5 +153,11 @@ router.post('/', upload.single('file'), (req,res)=> {
     }
 });
 
+router.get('/download', (req, res) => {
+    const file = `${__dirname}/template_c.csv`;
+    // console.log(file);
+    // console.log(__dirname);
+    res.download(file); 
+});
 
 module.exports = router;

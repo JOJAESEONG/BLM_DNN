@@ -157,7 +157,7 @@ router.post('/', upload.single('file'), (req,res)=> {
 });
 
 router.get('/download', (req, res) => {
-    const file = `${__dirname}/template.csv`;
+    const file = `${__dirname}/template_a.csv`;
     // console.log(file);
     // console.log(__dirname);
     res.download(file); 
