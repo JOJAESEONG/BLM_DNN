@@ -32,8 +32,9 @@ const PORT = config.app.port; // 원하는 포트 번호 입력
 
 
 const options = {
-  key: fs.readFileSync('./rootca.key'),
-  cert: fs.readFileSync('./rootca.crt')
+  key: fs.readFileSync('./172.30.1.43-key.pem'),
+  cert: fs.readFileSync('./172.30.1.43.pem'),
+  host:'172.30.1.43'
 };
 
 app.set('port', process.env.PORT || PORT);
@@ -109,7 +110,12 @@ app.use((req, res, next) => {
 });
 
 
+// const httpsServer = https.createServer(options, app);
 
+// httpsServer.listen(PORT, ()=>{
+//   console.log((new Date()).toLocaleString());
+//   console.log(`HTTPS -- listening on port ${PORT} ...`);
+// })
 
 app.listen(app.get('port'), IP_ADDRESS, () => {
     console.log(`Server running on http://${IP_ADDRESS}:${PORT}`);
@@ -120,9 +126,3 @@ app.listen(app.get('port'), IP_ADDRESS, () => {
 // // const HTTPS_PORT = 8443;
 // // https.createServer(options, app).listen(PORT,IP_ADDRESS);
 
-// const httpsServer = https.createServer(options, app);
-
-// httpsServer.listen(PORT, ()=>{
-//   console.log((new Date()).toLocaleString());
-//   console.log(`HTTPS -- listening on port 5007 ...`);
-// })

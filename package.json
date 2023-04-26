@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "HTTPS=true SSL_CRT_FILE=172.30.1.43.pem SSL_KEY_FILE=172.30.1.43-key.pem react-scripts start"
   },
   "author": "",
   "license": "ISC",
