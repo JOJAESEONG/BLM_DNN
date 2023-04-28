@@ -3,7 +3,6 @@ var app = express();
 var app2=express()
 const config = require('./config/config.js');
 const bodyParser = require('body-parser');
-const homeRouter = require('./routes/home');
 const path = require("path");
 const introRouter = require('./routes/introduce');
 const guideRouter = require('./routes/guide');

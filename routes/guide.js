@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
         res.redirect('/auth/login');
         return false;
     }
-    res.render('./contents/guide');
+    res.render('./contents/BLM_DNN_Guide_EN');
 });
 
 module.exports = router;
