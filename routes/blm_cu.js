@@ -163,4 +163,11 @@ router.get('/download', (req, res) => {
     res.download(file); 
 });
 
+router.get('/download_guide', (req, res) => {
+    const file = `${__dirname}/BLM_DNN_Guide_EN.pdf`;
+    // console.log(file);
+    // console.log(__dirname);
+    res.download(file); 
+});
+
 module.exports = router;
