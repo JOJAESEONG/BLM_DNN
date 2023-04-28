@@ -381,7 +381,6 @@
                                 <table class="table table-bordered table-striped fs--1 mb-0" style="text-align: center;">
                                   <thead class="bg-200 text-900">
                                     <tr>
-                                      <% if (data ==="" & data2 ==="" & data3 ==="" & data4 ==="" & pH === ""){ %>
                                         <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >pH</th>
                                         <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Mg (㎎/L)</th>
                                         <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Ca (㎎/L)</th>
@@ -391,43 +390,6 @@
                                         <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Chronic RCR</th>
                                         <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based acute HC5s (㎍/L)</th>
                                         <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Acute RCR</th>
-                                      <% } else if (ChRCR != "" && AcRCR !=""  ) { %>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >pH</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Mg (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Ca (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Na (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >DOC (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based chronic PNECs (㎍/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Chronic RCR</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based acute HC5s (㎍/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Acute RCR </th>   
-                                      <% } else if (ChRCR ==="" && AcRCR ==="" ) { %>   
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >pH</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Mg (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Ca (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Na (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >DOC (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based chronic PNECs (㎍/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based acute HC5s (㎍/L)</th>  
-                                      <% } else if (AcRCR ==="") { %>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >pH</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Mg (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Ca (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Na (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >DOC (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based chronic PNECs (㎍/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Chronic RCR</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based acute HC5s (㎍/L)</th>
-                                      <% } else if (AcRCR !="") { %>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >pH</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Mg (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Ca (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Na (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >DOC (㎎/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based chronic PNECs (㎍/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >BLM-based acute HC5s (㎍/L)</th>
-                                        <th style="font-size: 1.3em;" class="sort align-middle fw-medium" >Acute RCR</th>                 
-                                      <% } %>
                                     </tr>
                                   </thead>
                                   <tbody class="list">
@@ -465,7 +427,9 @@
                                           <td style="font-size: 1.3em;" class="align-middle "><%=Na[i].toFixed(1)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=DOC[i].toFixed(1)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=BLM_eu[i].toExponential(2)%></td>
+                                          <td style="font-size: 1.3em;" class="align-middle "></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=BLM_asia[i].toExponential(2)%></td>
+                                          <td style="font-size: 1.3em;" class="align-middle "></td>
                                         </tr>
                                         <% } %> 
                                     <% } else if (AcRCR ==="") { %>
@@ -479,6 +443,7 @@
                                           <td style="font-size: 1.3em;" class="align-middle "><%=BLM_eu[i].toExponential(2)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=ChRCR[i].toExponential(2)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=BLM_asia[i].toExponential(2)%></td>
+                                          <td style="font-size: 1.3em;" class="align-middle "></td>
                                         </tr>
                                         <% }%>
                                     <% } else if (AcRCR !=""){ %>
@@ -490,6 +455,7 @@
                                           <td style="font-size: 1.3em;" class="align-middle "><%=Na[i].toFixed(1)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=DOC[i].toFixed(1)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=BLM_eu[i].toExponential(2)%></td>
+                                          <td style="font-size: 1.3em;" class="align-middle "></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=BLM_asia[i].toExponential(2)%></td>
                                           <td style="font-size: 1.3em;" class="align-middle "><%=AcRCR[i].toExponential(2)%></td>
                                         </tr>
