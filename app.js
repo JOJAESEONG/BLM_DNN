@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const homeRouter = require('./routes/home');
 const path = require("path");
 const introRouter = require('./routes/introduce');
+const guideRouter = require('./routes/guide');
 const blmcuRouter = require('./routes/blm_cu');
 const blmcubRouter = require('./routes/blm_cu_b');
 const blmcucRouter = require('./routes/blm_cu_c');
@@ -91,6 +92,8 @@ app.get('/main', (req, res) => {
 // app.use('/', introRouter);
 
 app.use('/Intoduction' ,introRouter)
+
+app.use('/guide',guideRouter)
 
 app.use('/blm_cu', blmcuRouter)
 
