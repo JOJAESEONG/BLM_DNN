@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/db.js');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 // 로그인 화면
 router.get('/login', (req, res) => {
@@ -13,7 +15,7 @@ router.post('/login_process', function (request, response) {
     var password = request.body.pwd;
     if (username && password) {             // id와 pw가 입력되었는지 확인
         
-        db.query('SELECT * FROM userTable WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+        db.query('SELECT * FROM userTable WHERE username = ? AND password = ? AND token IS NULL ', [username, password], function(error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {       // db에서의 반환값이 있으면 로그인 성공
                 request.session.is_logined = true;      // 세션 정보 갱신
@@ -22,7 +24,7 @@ router.post('/login_process', function (request, response) {
                     response.redirect(`/`);
                 });
             } else {              
-                response.send(`<script type="text/javascript">alert("Login information does not match."); 
+                response.send(`<script type="text/javascript">alert("Login information does not match Or Please check Verify Email"); 
                 document.location.href="/auth/login";</script>`);    
             }            
         });
@@ -178,36 +180,88 @@ router.get('/register', (req, res) => {
  
 // 회원가입 프로세스
 router.post('/register_process', function(request, response) {    
-    var username = request.body.username;
-    var password = request.body.pwd;    
-    var password2 = request.body.pwd2;
-    var affiliation =request.body.affi;
-    var country = request.body.count;
-    var sector = request.body.sect;
-    if (username && password && password2 && affiliation && country && sector) {
-        
-        db.query('SELECT * FROM userTable WHERE username = ?', [username], function(error, results, fields) { // DB에 같은 이름의 회원아이디가 있는지 확인
-            if (error) throw error;
-            if (results.length <= 0 && password == password2) {     // DB에 같은 이름의 회원아이디가 없고, 비밀번호가 올바르게 입력된 경우 
-                db.query('INSERT INTO userTable (username, password, Affiliation, Country, Sector) VALUES(?,?,?,?,?)', [username, password, affiliation, country, sector], function (error, data) {
-                    if (error) throw error2;
-                    response.send(`<script type="text/javascript">alert("Your Register is complete!");
-                    document.location.href="/";</script>`);
-                });
-            } else if (password != password2) {                     // 비밀번호가 올바르게 입력되지 않은 경우
-                response.send(`<script type="text/javascript">alert("The passwords entered are different."); 
-                document.location.href="/auth/register";</script>`);    
-            }
-            else {                                                  // DB에 같은 이름의 회원아이디가 있는 경우
-                response.send(`<script type="text/javascript">alert("The ID or Email already exists."); 
-                document.location.href="/auth/register";</script>`);    
-            }            
-        });
-
-    } else {        // 입력되지 않은 정보가 있는 경우
-        response.send(`<script type="text/javascript">alert("There is information that has not been entered."); 
-        document.location.href="/auth/register";</script>`);
-    }
+  var username = request.body.username;
+  var password = request.body.pwd;    
+  var password2 = request.body.pwd2;
+  var affiliation = request.body.affi;
+  var country = request.body.count;
+  var sector = request.body.sect;
+  
+  if (username && password && password2 && affiliation && country && sector) {
+      db.query('SELECT * FROM userTable WHERE username = ?', [username], function(error, results, fields) {
+          if (error) throw error;
+          
+          if (results.length <= 0 && password == password2) {
+              // 일회용 토큰 생성
+              var token = crypto.randomBytes(6).toString('hex');
+              
+              // 이메일 전송
+              var transporter = nodemailer.createTransport({
+                  service: 'gmail',
+                  // host: 'smtp.gmail.com',
+                  // port: 465,
+                  // secure: true, // SSL/TLS 사용
+                  auth: {
+                      user: 'js.jo@ehrnc.com',
+                      pass: 'mcdksvaqrxzdumdn'
+                  }
+              });
+              
+              var mailOptions = {
+                  from: 'js.jo@ehrnc.com',
+                  to: username,
+                  subject: 'Email Verification',
+                  text: 'Please verify your email by clicking the link: http://172.30.1.43:5007/auth/verify?token=' + token
+              };
+              
+              transporter.sendMail(mailOptions, function(error, info) {
+                  if (error) {
+                      console.log(error);
+                  } else {
+                      console.log('Email sent: ' + info.response);
+                  }
+              });
+              
+              // 회원 정보와 토큰을 DB에 저장
+              db.query('INSERT INTO userTable (username, password, Affiliation, Country, Sector, token) VALUES(?,?,?,?,?,?)', [username, password, affiliation, country, sector, token], function (error, data) {
+                  if (error) throw error;
+                  response.send(`<script type="text/javascript">alert("Your Register is complete! Please check your email for verification.");
+                  document.location.href="/";</script>`);
+              });
+          } else if (password != password2) {
+              response.send(`<script type="text/javascript">alert("The passwords entered are different."); 
+              document.location.href="/auth/register";</script>`);    
+          } else {
+              response.send(`<script type="text/javascript">alert("The ID or Email already exists."); 
+              document.location.href="/auth/register";</script>`);    
+          }            
+      });
+  }
 });
+
+// 이메일 확인 라우트
+router.get('/verify', function(request, response) {
+  var token = request.query.token;
+  
+  db.query('SELECT * FROM userTable WHERE token = ?', [token], function(error, results, fields) {
+      if (error) throw error;
+      
+      if (results.length > 0) {
+          // 토큰이 유효한 경우 회원가입을 완료하고 토큰을 초기화합니다.
+          var user = results[0];
+          
+          db.query('UPDATE userTable SET token = NULL WHERE id = ?', [user.id], function(error, data) {
+              if (error) throw error;
+              
+              // 회원가입 완료 메시지를 보여줍니다.
+              response.send('Email verified! Your registration is complete.');
+          });
+      } else {
+          // 유효하지 않은 토큰인 경우 오류 메시지를 보여줍니다.
+          response.send('Invalid token. Please try again.');
+      }
+  });
+});
+
 
 module.exports = router;
