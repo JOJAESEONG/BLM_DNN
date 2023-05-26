@@ -255,11 +255,11 @@ router.get('/verify', function(request, response) {
               if (error) throw error;
               
               // 회원가입 완료 메시지를 보여줍니다.
-              response.send('Email verified! Your registration is complete.');
+              res.render('./contents/verify');  
           });
       } else {
           // 유효하지 않은 토큰인 경우 오류 메시지를 보여줍니다.
-          response.send('Invalid token. Please try again.');
+          res.render('./contents/verify_error');
       }
   });
 });
