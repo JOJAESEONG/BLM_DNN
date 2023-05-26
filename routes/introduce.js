@@ -7,10 +7,12 @@ var authCheck = require('../lib_login/authCheck.js');
 
 router.get('/', (req, res) => {
     if (!authCheck.isOwner(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
-        res.redirect('/auth/login');
+        res.render('./contents/Intoduction2');
         return false;
+    }else{
+        res.render('./contents/Intoduction');
     }
-    res.render('./contents/Intoduction');
+    
 });
 
 module.exports = router;

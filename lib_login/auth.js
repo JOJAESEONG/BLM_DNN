@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('../db/db.js');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
-
+const config = require('../config/config.js');
 // 로그인 화면
 router.get('/login', (req, res) => {
     res.render('../views/contents/login.ejs');
@@ -211,7 +211,8 @@ router.post('/register_process', function(request, response) {
                   from: 'js.jo@ehrnc.com',
                   to: username,
                   subject: 'Email Verification',
-                  text: 'Please verify your email by clicking the link: http://172.30.1.43:5007/auth/verify?token=' + token
+                  //서버 pc가 변경될때마다 주소 변경해야함
+                  text: 'Please verify your email by clicking the link: http://'+config.app.ip+':'+config.app.port+'/auth/verify?token=' + token
               };
               
               transporter.sendMail(mailOptions, function(error, info) {
