@@ -226,8 +226,7 @@ router.post('/register_process', function(request, response) {
               // 회원 정보와 토큰을 DB에 저장
               db.query('INSERT INTO userTable (username, password, Affiliation, Country, Sector, token) VALUES(?,?,?,?,?,?)', [username, password, affiliation, country, sector, token], function (error, data) {
                   if (error) throw error;
-                  response.send(`<script type="text/javascript">alert("Your Register is complete! Please check your email for verification.");
-                  document.location.href="/";</script>`);
+                  response.render('./contents/confirm-mail',{data: username});
               });
           } else if (password != password2) {
               response.send(`<script type="text/javascript">alert("The passwords entered are different."); 
@@ -255,11 +254,11 @@ router.get('/verify', function(request, response) {
               if (error) throw error;
               
               // 회원가입 완료 메시지를 보여줍니다.
-              res.render('./contents/verify');  
+              response.render('./contents/verify');  
           });
       } else {
           // 유효하지 않은 토큰인 경우 오류 메시지를 보여줍니다.
-          res.render('./contents/verify_error');
+          response.render('./contents/verify_error');
       }
   });
 });
