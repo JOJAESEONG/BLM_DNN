@@ -112,9 +112,9 @@ app.use((req, res, next) => {
 });
 
 
-app.listen(app.get('port'), IP_ADDRESS, () => {
-  console.log(`Server running on http://${IP_ADDRESS}:${PORT}`);
-});
+// app.listen(app.get('port'), IP_ADDRESS, () => {
+//   console.log(`Server running on http://${IP_ADDRESS}:${PORT}`);
+// });
 
 // const httpsServer = https.createServer(options, app);
 
@@ -125,8 +125,8 @@ app.listen(app.get('port'), IP_ADDRESS, () => {
 
 
 
-// // const HTTP_PORT = 8080;
-// // http.createServer(app2).listen(HTTP_PORT);
-// // const HTTPS_PORT = 8443;
-// // https.createServer(options, app).listen(PORT,IP_ADDRESS);
+const HTTP_PORT = 8080;
+http.createServer(app).listen(HTTP_PORT,IP_ADDRESS);
+const HTTPS_PORT = 443;
+https.createServer(options, app).listen(HTTPS_PORT,IP_ADDRESS);
 
