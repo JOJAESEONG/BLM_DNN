@@ -34,7 +34,7 @@ BLM/
 │   ├── blm_zn.js
 │   ├── template.csv
 │   └── index.js
-└── viewsa
+└── views
    ├── index.ejs
    ├── home.ejs
    ├── introduction.ejs
