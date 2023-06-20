@@ -32,8 +32,8 @@ const PORT = config.app.port; // 원하는 포트 번호 입력
 
 
 const options = {
-  key: fs.readFileSync('./172.30.1.43-key.pem'),
-  cert: fs.readFileSync('./172.30.1.43.pem'),
+  key: fs.readFileSync('./www.ehrnc.com-key.pem'),
+  cert: fs.readFileSync('./www.ehrnc.com.pem'),
   host:'172.30.1.43'
 };
 
@@ -70,7 +70,7 @@ app.use(express.static('public'));
 //     }
 //   })
 
-app.use('/auth', authRouter);
+app.use('/BLM-DNN/auth', authRouter);
 
 app.get('/main', (req, res) => {
     if (!authCheck.isOwner(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
@@ -88,23 +88,23 @@ app.get('/main', (req, res) => {
   
 //
 
-app.use('/', introRouter);
+app.use('/BLM-DNN', introRouter);
 
-app.use('/Intoduction' ,introRouter)
+app.use('/BLM-DNN/Intoduction' ,introRouter)
 
-app.use('/guide',guideRouter)
+app.use('/BLM-DNN/guide',guideRouter)
 
-app.use('/blm_cu', blmcuRouter)
+app.use('/BLM-DNN/blm_cu', blmcuRouter)
 
-app.use('/blm_cu_b', blmcubRouter)
+app.use('/BLM-DNN/blm_cu_b', blmcubRouter)
 
-app.use('/blm_cu_c', blmcucRouter)
+app.use('/BLM-DNN/blm_cu_c', blmcucRouter)
 
-app.use('/blm_cu_asia', blmcuaRouter)
+app.use('/BLM-DNN/blm_cu_asia', blmcuaRouter)
 
-app.use('/blm_cu_b_asia', blmcubaRouter)
+app.use('/BLM-DNN/blm_cu_b_asia', blmcubaRouter)
 
-app.use('/blm_cu_c_asia', blmcucaRouter)
+app.use('/BLM-DNN/blm_cu_c_asia', blmcucaRouter)
 
 app.use((req, res, next) => {
     res.status(404).render('./contents/404.ejs');
@@ -125,8 +125,8 @@ app.use((req, res, next) => {
 
 
 
-const HTTP_PORT = 8080;
-http.createServer(app).listen(HTTP_PORT,IP_ADDRESS);
+// const HTTP_PORT = 8080;
+// http.createServer(app).listen(HTTP_PORT,IP_ADDRESS);
 const HTTPS_PORT = 443;
 https.createServer(options, app).listen(HTTPS_PORT,IP_ADDRESS);
 

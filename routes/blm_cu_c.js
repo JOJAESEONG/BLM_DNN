@@ -13,7 +13,7 @@ var authCheck = require('../lib_login/authCheck.js');
 
 router.get('/', (req, res) => {
     if (!authCheck.isOwner(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
-        res.redirect('/auth/login');
+        res.redirect('/BLM-DNN/auth/login');
         return false;
     }
     res.render('./contents/blm_cu_c',{data:"", data2:"", data3:"", data4:"",pH:"",ChRCR:"",AcRCR:""});
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.post('/', upload.single('file'), (req,res)=> {
     if (!authCheck.isOwner(req, res)) {  // 로그인 안되어있으면 로그인 페이지로 이동시킴
-        res.redirect('/auth/login');
+        res.redirect('/BLM-DNN/auth/login');
         return false;
     }
 

@@ -21,17 +21,17 @@ router.post('/login_process', function (request, response) {
                 request.session.is_logined = true;      // 세션 정보 갱신
                 request.session.nickname = username;
                 request.session.save(function () {
-                    response.redirect(`/`);
+                    response.redirect(`/BLM-DNN`);
                 });
             } else {              
                 response.send(`<script type="text/javascript">alert("Login information does not match Or Please check Verify Email"); 
-                document.location.href="/auth/login";</script>`);    
+                document.location.href="/BLM-DNN/auth/login";</script>`);    
             }            
         });
 
     } else {
         response.send(`<script type="text/javascript">alert("Enter your ID and password!"); 
-        document.location.href="/auth/login";</script>`);    
+        document.location.href="/BLM-DNN/auth/login";</script>`);    
     }
 });
 
@@ -121,7 +121,7 @@ router.get('/logout', (req, res) => {
                               </div>
                               <!--/.bg-holder-->
         
-                              <div class="z-index-1 position-relative"><a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="/auth/login">EH R&C</a>
+                              <div class="z-index-1 position-relative"><a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="/BLM-DNN/Intoduction">EH R&C</a>
                                 <p class="opacity-75 text-white">An independent scientific consultancy on the global issues of environmental health and ecosystem</p>
                               </div>
                             </div>
@@ -133,7 +133,7 @@ router.get('/logout', (req, res) => {
                             <div class="p-4 p-md-5 flex-grow-1">
                               <div class="text-center"><img class="d-block mx-auto mb-4" src="../../../assets/img/icons/spot-illustrations/45.png" alt="shield" width="100" />
                                 <h3>See you again!</h3>
-                                <p>Thanks for Comming EH R&C. <br/> You are now successfully signed out.</p><a class="btn btn-primary btn-sm mt-3" href="/auth/login"><span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Return to Login</a>
+                                <p>Thanks for Comming EH R&C. <br/> You are now successfully signed out.</p><a class="btn btn-primary btn-sm mt-3" href="/BLM-DNN/Intoduction"><span class="fas fa-chevron-left me-1" data-fa-transform="shrink-4 down-1"></span>Return to Home</a>
                               </div>
                             </div>
                           </div>
@@ -212,7 +212,7 @@ router.post('/register_process', function(request, response) {
                   to: username,
                   subject: 'Email Verification',
                   //서버 pc가 변경될때마다 주소 변경해야함
-                  text: 'Please verify your email by clicking the link: http://'+config.app.ip+':'+config.app.port+'/auth/verify?token=' + token
+                  text: 'Please verify your email by clicking the link: https://www.ehrnc.com/auth/verify?token=' + token
               };
               
               transporter.sendMail(mailOptions, function(error, info) {
@@ -230,10 +230,10 @@ router.post('/register_process', function(request, response) {
               });
           } else if (password != password2) {
               response.send(`<script type="text/javascript">alert("The passwords entered are different."); 
-              document.location.href="/auth/register";</script>`);    
+              document.location.href="/BLM-DNN/auth/register";</script>`);    
           } else {
               response.send(`<script type="text/javascript">alert("The ID or Email already exists."); 
-              document.location.href="/auth/register";</script>`);    
+              document.location.href="/BLM-DNN/auth/register";</script>`);    
           }            
       });
   }
@@ -254,11 +254,16 @@ router.get('/verify', function(request, response) {
               if (error) throw error;
               
               // 회원가입 완료 메시지를 보여줍니다.
-              response.render('./contents/verify');  
+              response.render('../views/contents/verify.ejs');  
           });
       } else {
-          // 유효하지 않은 토큰인 경우 오류 메시지를 보여줍니다.
-          response.render('./contents/verify_error');
+        // 토큰이 유효하지 않은 경우 해당 토큰이 있는 컬럼을 삭제합니다.
+        db.query('DELETE FROM userTable WHERE  token IS NOT NULL', function(error, data) {
+          if (error) throw error;
+          
+          // 유효하지 않은 토큰 메시지를 보여줍니다.
+          response.render('../views/contents/verify_error.ejs');
+      });
       }
   });
 });
