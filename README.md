@@ -2,6 +2,8 @@
 
 ## The Website using Falcon Template and BLM_DNN model 
 
+## A code update is made on the master branch. Please refer to the master branch.
+
 #### The copyright of this template is in Falcon.
 
 #### The copyright of BLM_DNN model (EU & ASIA) Copper belongs to Dr. Jung Ji-woong. 
